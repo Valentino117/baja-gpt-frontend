@@ -21,7 +21,7 @@ export default function Home() {
 
     try {
       console.log("📤 Sending:", input);
-      const res = await fetch("https://baja-backend-a5iv.onrender.com", {
+      const res = await fetch("https://baja-backend-a5iv.onrender.com/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input }),
