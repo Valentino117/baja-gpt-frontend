@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import { useState } from "react";
@@ -9,7 +8,7 @@ export default function Home() {
   const [outputs, setOutputs] = useState<{
     vanilla: string;
     fine_tuned: string;
-  } | null>({
+  }>({
     vanilla: "Base GPT-4.1 (prompted to use a Baja Spanish dialect) will translate your input here",
     fine_tuned: "Fine-tuned GPT-4.1 (trained on Baja Spanish dialect) will translate your input here",
   });
@@ -17,7 +16,6 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setOutputs(null);
 
     try {
       console.log("📤 Sending:", input);
@@ -91,21 +89,27 @@ export default function Home() {
             Base GPT-4.1 (Prompted)
           </div>
           <h2 className="text-2xl font-semibold mb-2 mt-4">🔵 GPT-4.1 (Prompted)</h2>
-          <p className="text-gray-800 whitespace-pre-wrap min-h-[60px]">
-            {outputs?.vanilla || "This output simulates the Baja dialect using a system prompt."}
-          </p>
+          {loading ? (
+            <p className="text-gray-500 italic">Translating with base model...</p>
+          ) : (
+            <p className="text-gray-800 whitespace-pre-wrap min-h-[60px]">
+              {outputs?.vanilla}
+            </p>
+          )}
         </div>
 
         <div className="bg-white shadow-lg rounded p-6 border border-green-400 relative">
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-400 text-white text-xs px-2 py-1 rounded shadow">
             Fine-Tuned GPT-4.1 for Baja
           </div>
-          <h2 className="text-2xl font-semibold mb-2 mt-4">
-            🟠 GPT-4.1 (Fine-Tuned)
-          </h2>
-          <p className="text-gray-800 whitespace-pre-wrap min-h-[60px]">
-            {outputs?.fine_tuned || "This output is from a fine-tuned model trained specifically on Baja Spanish."}
-          </p>
+          <h2 className="text-2xl font-semibold mb-2 mt-4">🟠 GPT-4.1 (Fine-Tuned)</h2>
+          {loading ? (
+            <p className="text-gray-500 italic">Translating with fine-tuned model...</p>
+          ) : (
+            <p className="text-gray-800 whitespace-pre-wrap min-h-[60px]">
+              {outputs?.fine_tuned}
+            </p>
+          )}
         </div>
       </div>
 
