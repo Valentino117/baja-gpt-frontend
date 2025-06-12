@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import OutputComparison from "../components/OutputComparison";
 
 export default function Home() {
   const [input, setInput] = useState("");
