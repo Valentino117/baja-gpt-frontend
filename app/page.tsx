@@ -63,9 +63,21 @@ export default function Home() {
         onSubmit={handleSubmit}
         className="w-full max-w-xl bg-white shadow-md rounded p-6 mb-8"
       >
-        <label htmlFor="input" className="block text-lg font-medium mb-2 text-gray-800">
-          Enter English sentence:
+        <label className="block text-lg font-medium mb-2 text-gray-800">
+          Choose a sample or type your own:
         </label>
+        <select
+          className="w-full border border-gray-300 rounded px-4 py-2 mb-4 text-gray-900"
+          onChange={(e) => setInput(e.target.value)}
+          defaultValue=""
+        >
+          <option value="" disabled>Select a famous passage…</option>
+          <option value="It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair, we had everything before us, we had nothing before us, we were all going direct to Heaven, we were all going direct the other way--in short, the period was so far like the present period that some of its noisiest authorities insisted on its being received, for good or for evil, in the superlative degree of comparison only.">🌆 Dickens</option>
+          <option value="Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can.">🐳 Melville</option>
+          <option value="In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility, I welcome it. I do not believe that any of us would exchange places with any other people or any other generation. The energy, the faith, the devotion which we bring to this endeavor will light our country and all who serve it and the glow from that fire can truly light the world. And so, my fellow Americans: ask not what your country can do for you--ask what you can do for your country. My fellow citizens of the world: ask not what America will do for you, but what together we can do for the freedom of man.">🇺🇸 Kennedy</option>
+          <option value="On a dark desert highway, cool wind in my hair Warm smell of colitas, rising up through the air Up ahead in the distance, I saw a shimmering light. My head grew heavy and my sight grew dim, I had to stop for the night. There she stood in the doorway. I heard the mission bell. And I was thinking to myself 'This could be Heaven or this could be Hell.' Then she lit up a candle, and she showed me the way. There were voices down the corridor; I thought I heard them say: Welcome to the Hotel California. Such a lovely place (Such a lovely place), Such a lovely face. Plenty of room at the Hotel California. Any time of year (Any time of year), You can find it here.">🦅 Eagles</option>
+        </select>
+
         <input
           id="input"
           type="text"
