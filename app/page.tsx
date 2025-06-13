@@ -47,18 +47,15 @@ export default function Home() {
 
       if (!res.ok) {
         const errorText = await res.text();
-        setOutputs({
-          vanilla: "❌ Error from backend: " + errorText,
-          fine_tuned: "",
-        });
-        return;
+        throw new Error("Backend error: " + errorText);
       }
 
       const data = await res.json();
       setOutputs(data);
-    } catch (err) {
+    } catch (error) {
+      console.error("❌ Unexpected fetch error:", error);
       setOutputs({
-        vanilla: "❌ Unexpected client-side error",
+        vanilla: "❌ Error while fetching translation",
         fine_tuned: "",
       });
     }
